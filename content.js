@@ -1,13 +1,26 @@
-function boostVolume() {
-    const audioElements = document.querySelectorAll("audio, video");
-    audioElements.forEach((element) => {
-        element.volume = Math.min(element.volume * 1.5, 1); // Увеличиваем громкость на 50%, но не более 100%
+let audioCtx;
+let gainNodes = new Map();
+
+function boostVolume(factor) {
+    if (!audioCtx) {
+        audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+    }
+
+    const audioElements = document.querySelectorAll('audio, video');
+    audioElements.forEach(element => {
+        if (!gainNodes.has(element)) {
+            const source = audioCtx.createMediaElementSource(element);
+            const gainNode = audioCtx.createGain();
+            gainNode.gain.value = factor;
+            source.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            gainNodes.set(element, gainNode);
+        } else {
+            const gainNode = gainNodes.get(element);
+            gainNode.gain.value = factor;
+        }
     });
 }
 
-// Привязываем функцию к клавише, например, 'B' для увеличения громкости
-document.addEventListener("keydown", (event) => {
-    if (event.key === "B") {
-        boostVolume();
-    }
-});
+// Привязываем функцию к глобальному объекту window, чтобы она была доступна из popup.js
+window.boostVolume = boostVolume;
