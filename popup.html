@@ -2,20 +2,16 @@
 <html>
 
 <head>
-    <style>
-        body {
-            width: 200px;
-        }
-        
-        button {
-            width: 100%;
-            margin: 10px 0;
-        }
-    </style>
+    <title>Volume booster</title>
+    <link rel="stylesheet" type="text/css" href="popup.css" />
 </head>
 
 <body>
     <h3>Volume Booster</h3>
+    <div class="slidecontainer">
+        <input type="range" min="0" max="500" value="100" class="slider" id="volumeSlider">
+    </div>
+    <label for="volumeSlider">Volume: <span id="volumeValue">100</span></label>
     <button id="boost">Boost Volume</button>
     <script src="popup.js"></script>
 </body>
