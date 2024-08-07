@@ -24,6 +24,10 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    background-color: #333;
+    /* Темно-серый фон квадрата */
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #volumeSlider {
@@ -32,14 +36,53 @@ body {
     height: 150px;
 }
 
+.rs-control {
+    border: none;
+    /* Убираем границу квадрата */
+}
+
+.rs-range-color {
+    background-color: #8a2be2 !important;
+    /* Фиолетовый цвет заполненной части */
+}
+
+.rs-handle {
+    background: #8a2be2;
+    background-color: #8a2be2;
+    /* Фиолетовый ползунок */
+    border: 2px solid #8a2be2;
+    /* Фиолетовая линия ползунка */
+}
+
+.rs-path-color {
+    background-color: #555 !important;
+    /* Серый цвет линии окружности */
+}
+
+.rs-range {
+    border-width: 4px;
+    /* Толщина заполненной части */
+}
+
+.rs-path {
+    border-width: 4px;
+    /* Толщина линии окружности */
+}
+
 .volume-value {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
+    color: #8a2be2;
+    /* Фиолетовый цвет текста */
     pointer-events: none;
     /* Чтобы текст не мешал кликам */
+    background: #555;
+    /* Серый фон под текстом */
+    padding: 5px;
+    border-radius: 50%;
 }
 
 .buttons-container {
@@ -50,8 +93,8 @@ body {
 }
 
 button {
-    background: rgba(0, 0, 0, 0.8);
-    /* Прозрачный темный фон */
+    background: #333;
+    /* Темно-серый фон */
     color: #8a2be2;
     /* Фиолетовый цвет текста */
     border: 2px solid #8a2be2;
@@ -62,6 +105,6 @@ button {
 }
 
 button:hover {
-    background: rgba(0, 0, 0, 0.6);
-    /* Изменяем прозрачность при наведении */
+    background: #555;
+    /* Серый фон при наведении */
 }

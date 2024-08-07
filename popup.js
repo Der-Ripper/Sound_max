@@ -37,14 +37,16 @@ $(document).ready(function() {
     const maxButton = $("#max");
 
     volumeSlider.roundSlider({
+        width: 5,
+        handleSize: "+14",
         sliderType: "min-range",
-        circleShape: "pie",
-        startAngle: 315,
+        circleShape: "full", // Изменено на полную окружность
+        startAngle: 0,
+        mouseScrollAction: true,
         value: 10,
         min: 0,
         max: 100,
         step: 1,
-        editableTooltip: false,
         tooltipFormat: function(e) {
             const factor = (e.value * 0.1).toFixed(1);
             volumeValue.text(factor + "x");
@@ -69,7 +71,7 @@ $(document).ready(function() {
                     args: [factor]
                 });
             } else {
-                console.error("Cannot access a non-http(s) URL.");
+                console.log("Cannot access a non-http(s) URL.");
             }
         });
     }
