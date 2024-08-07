@@ -2,17 +2,25 @@
 <html>
 
 <head>
-    <title>Volume booster</title>
-    <link rel="stylesheet" type="text/css" href="popup.css" />
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="roundslider.min.css">
 </head>
 
 <body>
-    <h3>Volume Booster</h3>
-    <div class="slidecontainer">
-        <input type="range" min="0" max="500" value="100" class="slider" id="volumeSlider">
+    <div class="container">
+        <h3>Volume Booster</h3>
+        <div class="volume-container">
+            <div id="volumeSlider" class="circular-slider"></div>
+            <div id="volumeValue" class="volume-value">1.0x</div>
+        </div>
+        <div class="buttons-container">
+            <button id="mute">Mute</button>
+            <button id="reset">Reset</button>
+            <button id="max">Max Volume</button>
+        </div>
     </div>
-    <label for="volumeSlider">Volume: <span id="volumeValue">100</span></label>
-    <button id="boost">Boost Volume</button>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="roundslider.min.js"></script>
     <script src="popup.js"></script>
 </body>
 
