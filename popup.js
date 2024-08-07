@@ -1,34 +1,3 @@
-/*
-const volumeSlider = document.getElementById('volumeSlider');
-const volumeValue = document.getElementById('volumeValue');
-const volumeButton = document.getElementById('boost');
-
-volumeSlider.addEventListener('input', () => {
-    const factor = volumeSlider.value * 0.1; // Преобразуем значение ползунка в нужный фактор громкости
-    volumeValue.textContent = factor.toFixed(1) + 'x';
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
-            func: (factor) => window.boostVolume(factor),
-            args: [factor]
-        });
-    });
-});
-
-volumeButton.addEventListener('click', () => {
-    const factor = 10; // Устанавливаем громкость на максимум
-    volumeSlider.value = factor * 10;
-    volumeValue.textContent = factor.toFixed(1) + 'x';
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
-            func: (factor) => window.boostVolume(factor),
-            args: [factor]
-        });
-    });
-});
-*/
-
 $(document).ready(function() {
     const volumeSlider = $("#volumeSlider");
     const volumeValue = $("#volumeValue");
@@ -38,11 +7,19 @@ $(document).ready(function() {
 
     volumeSlider.roundSlider({
         width: 5,
-        handleSize: "+14",
         sliderType: "min-range",
-        circleShape: "full", // Изменено на полную окружность
-        startAngle: 0,
+        handleSize: +15,
+        handleShape: "round",
+        circleShape: "pie",
+        //circleShape: "full", // Изменено на полную окружность
+        //startAngle: 0,
+        startAngle: 315,
+        borderWidth: 0,
         mouseScrollAction: true,
+        pathColor: '#555',
+        rangeColor: '#8a2be2',
+        tooltipColor: '#8a2be2',
+        svgMode: true,
         value: 10,
         min: 0,
         max: 100,
